@@ -73,6 +73,5 @@ func handleNotify(s *discordgo.Session, i *discordgo.InteractionCreate) {
 		Color:       utils.EmbedColor,
 	}
 
-	utils.SendToChannelEmbed(embed, s, "1377120291452358690", utils.NotifiedRoleId)
 	utils.InteractionRespondEmbed(embed, s, i.Interaction, false, utils.NotifiedRoleId)
 }
