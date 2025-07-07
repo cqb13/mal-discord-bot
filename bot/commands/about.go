@@ -42,6 +42,10 @@ func handleAbout(s *discordgo.Session, i *discordgo.InteractionCreate) {
 				Name:  "Rules",
 				Value: "1. Follow the Discord [Terms of Service](https://discord.com/terms) and [Community Guidelines](https://discord.com/guidelines).\n2. Do not attempt to spam.\n3. Do not advertise outside of the appropriate channel.",
 			},
+			{
+				Name:  "",
+				Value: "*Run **/notified** to stay updated on all new verified addons*",
+			},
 		},
 	}
 
