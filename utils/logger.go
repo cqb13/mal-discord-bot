@@ -6,5 +6,6 @@ import (
 )
 
 func Log(message string) {
-	fmt.Printf("[%d] %s\n", time.Now().Unix(), message)
+	time := time.Now()
+	fmt.Printf("[%02d/%02d/%d | %02d:%02d:%02d] %s\n", time.Month(), time.Day(), time.Year(), time.Hour(), time.Minute(), time.Second(), message)
 }

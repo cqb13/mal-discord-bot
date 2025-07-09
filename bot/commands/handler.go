@@ -11,6 +11,7 @@ var Commands = []*discordgo.ApplicationCommand{
 	AboutCommand,
 	NotifiedCommand,
 	NotifyCommand,
+	RepoCommand,
 }
 
 func HandleInteractions(s *discordgo.Session, i *discordgo.InteractionCreate) {
@@ -28,6 +29,9 @@ func HandleInteractions(s *discordgo.Session, i *discordgo.InteractionCreate) {
 		return
 	case "notify":
 		handleNotify(s, i)
+		return
+	case "repo":
+		handleRepo(s, i)
 		return
 	}
 }

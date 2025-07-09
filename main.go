@@ -2,9 +2,11 @@ package main
 
 import (
 	"dev/cqb13/mal-bot/bot"
+	"dev/cqb13/mal-bot/utils"
 	"fmt"
-	"github.com/joho/godotenv"
 	"os"
+
+	"github.com/joho/godotenv"
 )
 
 func main() {
@@ -15,6 +17,9 @@ func main() {
 	}
 
 	var key string = os.Getenv("KEY")
+	var githubToken string = os.Getenv("GITHUB_TOKEN")
+
+	utils.InitDefaultHeaders(githubToken)
 
 	bot.BotToken = key
 	bot.Run()
