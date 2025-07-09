@@ -16,7 +16,7 @@ var Commands = []*discordgo.ApplicationCommand{
 	NotifiedCommand,
 	NotifyCommand,
 	RepoCommand,
-	VerifiedCommand,
+	addonList.VerifiedCommand,
 }
 
 func HandleInteractions(s *discordgo.Session, i *discordgo.InteractionCreate) {
@@ -48,7 +48,7 @@ func HandleInteractions(s *discordgo.Session, i *discordgo.InteractionCreate) {
 		handleRepo(s, i)
 		return
 	case "verified":
-		handleVerified(s, i)
+		addonList.HandleVerified(s, i)
 		return
 	}
 }
