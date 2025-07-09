@@ -21,7 +21,6 @@ func checkNilErr(e error) {
 }
 
 func Run() {
-
 	session, err := discordgo.New("Bot " + BotToken)
 	checkNilErr(err)
 
@@ -36,12 +35,12 @@ func Run() {
 	for _, cmd := range commands.Commands {
 		_, err := session.ApplicationCommandCreate(appID, guildID, cmd)
 		if err != nil {
-			log.Printf("Failed to create command %s: %v", cmd.Name, err)
+			utils.Log(fmt.Sprintf("Failed to create command %s: %v", cmd.Name, err))
 		}
 		utils.Log(fmt.Sprintf("%s command added", cmd.Name))
 	}
 
-	fmt.Println("Bot running....")
+	utils.Log("Bot Running")
 	c := make(chan os.Signal, 1)
 	signal.Notify(c, os.Interrupt)
 	<-c

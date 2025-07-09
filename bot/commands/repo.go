@@ -66,6 +66,18 @@ func handleRepo(s *discordgo.Session, i *discordgo.InteractionCreate) {
 		return
 	}
 
+	createdAt, err := utils.RFC3339StrToPrettyStr(repository.CreatedAt)
+	if err != nil {
+		utils.InteractionRespondText(fmt.Sprintf("Command Failed: %v", err), s, i.Interaction, true, "")
+		return
+	}
+
+	pushedAt, err := utils.RFC3339StrToPrettyStr(repository.PushedAt)
+	if err != nil {
+		utils.InteractionRespondText(fmt.Sprintf("Command Failed: %v", err), s, i.Interaction, true, "")
+		return
+	}
+
 	embed := &discordgo.MessageEmbed{
 		Title:       repository.Name,
 		Description: repository.Description,
@@ -99,12 +111,12 @@ func handleRepo(s *discordgo.Session, i *discordgo.InteractionCreate) {
 			},
 			{
 				Name:   "Created On",
-				Value:  repository.CreatedAt,
+				Value:  createdAt,
 				Inline: false,
 			},
 			{
 				Name:   "Latest Push",
-				Value:  repository.PushedAt,
+				Value:  pushedAt,
 				Inline: true,
 			},
 			{
