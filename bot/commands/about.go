@@ -13,7 +13,7 @@ var AboutCommand = &discordgo.ApplicationCommand{
 
 func handleAbout(s *discordgo.Session, i *discordgo.InteractionCreate) {
 	embed := &discordgo.MessageEmbed{
-		Title:       "**Meteor Addon List**",
+		Title:       "Meteor Addon List",
 		Description: "An ever updating list of free and open-source Meteor Client addons.",
 		Color:       utils.EmbedColor,
 		Fields: []*discordgo.MessageEmbedField{
