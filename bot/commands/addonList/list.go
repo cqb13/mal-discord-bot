@@ -3,7 +3,6 @@ package addonList
 import (
 	"dev/cqb13/mal-bot/utils"
 	"encoding/json"
-	"fmt"
 	"time"
 )
 
