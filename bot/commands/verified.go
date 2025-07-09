@@ -47,7 +47,7 @@ func getVerifiedAddons() (string, error) {
 	url := "https://raw.githubusercontent.com/cqb13/meteor-addon-scanner/main/verified.txt"
 	bytes, err := utils.MakeGetRequest(url)
 	if err != nil {
-		return "", nil
+		return "", err
 	}
 
 	return string(bytes), nil

@@ -1,6 +1,7 @@
 package commands
 
 import (
+	"dev/cqb13/mal-bot/bot/commands/addonList"
 	"dev/cqb13/mal-bot/utils"
 	"fmt"
 
@@ -9,6 +10,7 @@ import (
 
 var Commands = []*discordgo.ApplicationCommand{
 	AboutCommand,
+	addonList.ListStatsCommand,
 	NotifiedCommand,
 	NotifyCommand,
 	RepoCommand,
@@ -24,6 +26,9 @@ func HandleInteractions(s *discordgo.Session, i *discordgo.InteractionCreate) {
 	switch i.ApplicationCommandData().Name {
 	case "about":
 		handleAbout(s, i)
+		return
+	case "list-stats":
+		addonList.HandleListStats(s, i)
 		return
 	case "notified":
 		handleNotified(s, i)

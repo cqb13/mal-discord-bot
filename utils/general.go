@@ -32,3 +32,7 @@ func RFC3339StrToPrettyStr(str string) (string, error) {
 
 	return fmt.Sprintf("%d/%d/%d | %d:%d:%d", time.Month(), time.Day(), time.Year(), time.Hour(), time.Minute(), time.Second()), nil
 }
+
+func TimeToPrettyStr(t time.Time) string {
+	return fmt.Sprintf("%d/%d/%d | %d:%d:%d", t.Month(), t.Day(), t.Year(), t.Hour(), t.Minute(), t.Second())
+}
