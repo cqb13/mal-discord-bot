@@ -11,6 +11,7 @@ import (
 var Commands = []*discordgo.ApplicationCommand{
 	AboutCommand,
 	addonList.ListStatsCommand,
+	addonList.MostStarredCommand,
 	NotifiedCommand,
 	NotifyCommand,
 	RepoCommand,
@@ -29,6 +30,9 @@ func HandleInteractions(s *discordgo.Session, i *discordgo.InteractionCreate) {
 		return
 	case "list-stats":
 		addonList.HandleListStats(s, i)
+		return
+	case "most-starred":
+		addonList.HandleMostStarred(s, i)
 		return
 	case "notified":
 		handleNotified(s, i)
