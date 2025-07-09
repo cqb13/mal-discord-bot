@@ -30,8 +30,9 @@ func handleVerified(s *discordgo.Session, i *discordgo.InteractionCreate) {
 	}
 
 	embed := &discordgo.MessageEmbed{
-		Title: "Verified Addons",
-		Color: utils.EmbedColor,
+		Title:       "Verified Addons",
+		Description: fmt.Sprintf("Meteor addon list as of %s", utils.TimeToPrettyStr(fetchTime)),
+		Color:       utils.EmbedColor,
 		Fields: []*discordgo.MessageEmbedField{
 			{
 				Name:  "",
