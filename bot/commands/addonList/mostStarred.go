@@ -38,7 +38,7 @@ func HandleMostStarred(s *discordgo.Session, i *discordgo.InteractionCreate) {
 	top10Str := ""
 
 	for i := range 10 {
-		top10Str += fmt.Sprintf("- **%s** - %d stars\n", list[i].Repo.Name, list[i].Repo.Stars)
+		top10Str += fmt.Sprintf("- **%s** - %d stars\n", list[i].Name, list[i].Repo.Stars)
 	}
 
 	embed := &discordgo.MessageEmbed{

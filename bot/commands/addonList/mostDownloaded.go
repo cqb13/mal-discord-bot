@@ -38,7 +38,7 @@ func HandleMostDownloaded(s *discordgo.Session, i *discordgo.InteractionCreate) 
 	top10Str := ""
 
 	for i := range 10 {
-		top10Str += fmt.Sprintf("- **%s** - %d downloads\n", list[i].Repo.Name, list[i].Repo.Downloads)
+		top10Str += fmt.Sprintf("- **%s** - %d downloads\n", list[i].Name, list[i].Repo.Downloads)
 	}
 
 	embed := &discordgo.MessageEmbed{
