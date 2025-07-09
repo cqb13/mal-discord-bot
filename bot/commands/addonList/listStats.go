@@ -76,11 +76,11 @@ func HandleListStats(s *discordgo.Session, i *discordgo.InteractionCreate) {
 			},
 			{
 				Name:  "Most Starred Addon",
-				Value: fmt.Sprintf("%s by %s", mostStarredAddon.Name, mostStarredAddon.Repo.Owner),
+				Value: fmt.Sprintf("%s by %s - %d stars", mostStarredAddon.Name, mostStarredAddon.Repo.Owner, mostStarredAddon.Repo.Stars),
 			},
 			{
 				Name:  "Most Downloaded Addon",
-				Value: fmt.Sprintf("%s by %s", mostDownloadedAddon.Name, mostDownloadedAddon.Repo.Owner),
+				Value: fmt.Sprintf("%s by %s - %d downloads", mostDownloadedAddon.Name, mostDownloadedAddon.Repo.Owner, mostDownloadedAddon.Repo.Downloads),
 			},
 		},
 	}
