@@ -24,11 +24,15 @@ func handleAbout(s *discordgo.Session, i *discordgo.InteractionCreate) {
 			},
 			{
 				Name:  "How to Get Your Addon Verified",
-				Value: "Create a post in **verification-requests** with:\n- GitHub Repository Link\n- Short description of what your addon does.",
+				Value: "Create a post in **verification-requests** with:\n- GitHub Repository Link\n- Short description of what your addon does",
 			},
 			{
 				Name:  "What Will Prevent Verification",
 				Value: "- Harmful features (e.g. backdoors, coordinate leaks)\n- Obfuscated/unreadable code\n- Broken or non-functional addons",
+			},
+			{
+				Name:  "Addons that Will Not be Verified",
+				Value: "- Forks that do not meaningfully expand on the original\n- Forks of actively maintained addons (commits within 6 months)\n- Addons that take code from other addons without properly crediting original authors",
 			},
 			{
 				Name:  "",
