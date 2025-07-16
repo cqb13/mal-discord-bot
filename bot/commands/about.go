@@ -36,7 +36,7 @@ func handleAbout(s *discordgo.Session, i *discordgo.InteractionCreate) {
 			},
 			{
 				Name:  "",
-				Value: "*It may take some time to verify your addon. You will be notified when a decision is made.*",
+				Value: "*It may take some time to verify your addon. You will be notified when a decision is made.\nPlease only submit addons that you have created.*",
 			},
 			{
 				Name:  "Contributing",
