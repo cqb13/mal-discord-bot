@@ -24,7 +24,7 @@ func handleAbout(s *discordgo.Session, i *discordgo.InteractionCreate) {
 			},
 			{
 				Name:  "How to Get Your Addon Verified",
-				Value: "Create a post in **verification-requests** with:\n- GitHub Repository Link\n- Short description of what your addon does",
+				Value: "Create a post in **verification-requests** with:\n- GitHub Repository Link\n- Short description of what your addon does\n- **Addons that fall more than 1 major update behind will lose verified status and will need to be re-verified when/if updated.**",
 			},
 			{
 				Name:  "What Will Prevent Verification",
@@ -40,7 +40,7 @@ func handleAbout(s *discordgo.Session, i *discordgo.InteractionCreate) {
 			},
 			{
 				Name:  "Contributing",
-				Value: "Feel free help improve Meteor Addon List by contributing to the [website](https://github.com/cqb13/meteor-addons) and [scanner](https://github.com/cqb13/meteor-addon-scanner).",
+				Value: "Feel free help improve Meteor Addon List by contributing to the [website](https://github.com/cqb13/meteor-addons) or [scanner](https://github.com/cqb13/meteor-addon-scanner).",
 			},
 			{
 				Name:  "Rules",
