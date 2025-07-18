@@ -7,15 +7,21 @@ import (
 )
 
 type Addon struct {
-	Name         string   `json:"name"`
-	Description  string   `json:"description"`
-	McVersion    string   `json:"mc_version"`
-	Authors      []string `json:"authors"`
-	Features     []string `json:"features"`
+	Name        string   `json:"name"`
+	Description string   `json:"description"`
+	McVersion   string   `json:"mc_version"`
+	Authors     []string `json:"authors"`
+	Features    Features `json:"features"`
+	Verified    bool     `json:"verified"`
+	Repo        Repo     `json:"repo"`
+	Links       Links    `json:"links"`
+}
+
+type Features struct {
+	Modules      []string `json:"modules"`
+	Commands     []string `json:"commands"`
+	HudElements  []string `json:"hud_elements"`
 	FeatureCount int      `json:"feature_count"`
-	Verified     bool     `json:"verified"`
-	Repo         Repo     `json:"repo"`
-	Links        Links    `json:"links"`
 }
 
 type Repo struct {

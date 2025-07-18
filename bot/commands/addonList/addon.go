@@ -94,7 +94,7 @@ func HandleAddon(s *discordgo.Session, i *discordgo.InteractionCreate) {
 			},
 			{
 				Name:   "Feature Count",
-				Value:  strconv.Itoa(addon.FeatureCount),
+				Value:  strconv.Itoa(addon.Features.FeatureCount),
 				Inline: true,
 			},
 			{
