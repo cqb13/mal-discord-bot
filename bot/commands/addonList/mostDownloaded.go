@@ -3,6 +3,7 @@ package addonList
 import (
 	"dev/cqb13/mal-bot/utils"
 	"fmt"
+	"sort"
 
 	"github.com/bwmarrin/discordgo"
 )
@@ -19,21 +20,9 @@ func HandleMostDownloaded(s *discordgo.Session, i *discordgo.InteractionCreate) 
 		return
 	}
 
-	addons := len(list)
-
-	for i := range addons - 1 {
-		minIndex := i
-
-		for j := i + 1; j < addons; j++ {
-			if list[j].Repo.Downloads > list[minIndex].Repo.Downloads {
-				minIndex = j
-			}
-		}
-
-		temp := list[i]
-		list[i] = list[minIndex]
-		list[minIndex] = temp
-	}
+	sort.Slice(list, func(i, j int) bool {
+		return list[i].Repo.Downloads > list[j].Repo.Downloads
+	})
 
 	top10Str := ""
 

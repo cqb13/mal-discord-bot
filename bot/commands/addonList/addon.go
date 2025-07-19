@@ -15,13 +15,13 @@ var AddonCommand = &discordgo.ApplicationCommand{
 	Options: []*discordgo.ApplicationCommandOption{
 		{
 			Name:        "owner",
-			Description: "Owner of the repository",
+			Description: "Owner of the addon",
 			Type:        discordgo.ApplicationCommandOptionString,
 			Required:    true,
 		},
 		{
-			Name:        "repo",
-			Description: "Name of the repository",
+			Name:        "addon",
+			Description: "Name of the addon",
 			Type:        discordgo.ApplicationCommandOptionString,
 			Required:    true,
 		},
@@ -93,8 +93,23 @@ func HandleAddon(s *discordgo.Session, i *discordgo.InteractionCreate) {
 				Inline: true,
 			},
 			{
-				Name:   "Feature Count",
+				Name:   "Features",
 				Value:  strconv.Itoa(addon.Features.FeatureCount),
+				Inline: true,
+			},
+			{
+				Name:   "Modules",
+				Value:  strconv.Itoa(len(addon.Features.Modules)),
+				Inline: true,
+			},
+			{
+				Name:   "Commands",
+				Value:  strconv.Itoa(len(addon.Features.Commands)),
+				Inline: true,
+			},
+			{
+				Name:   "HUD Elements",
+				Value:  strconv.Itoa(len(addon.Features.HudElements)),
 				Inline: true,
 			},
 			{

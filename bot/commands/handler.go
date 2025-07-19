@@ -13,6 +13,7 @@ var Commands = []*discordgo.ApplicationCommand{
 	addonList.AddonCommand,
 	addonList.ListStatsCommand,
 	addonList.MostDownloadedCommand,
+	addonList.MostFeaturedCommand,
 	addonList.MostStarredCommand,
 	NotifiedCommand,
 	NotifyCommand,
@@ -38,6 +39,9 @@ func HandleInteractions(s *discordgo.Session, i *discordgo.InteractionCreate) {
 		return
 	case "most-downloaded":
 		addonList.HandleMostDownloaded(s, i)
+		return
+	case "most-featured":
+		addonList.HandleMostFeatured(s, i)
 		return
 	case "most-starred":
 		addonList.HandleMostStarred(s, i)
