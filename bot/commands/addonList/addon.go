@@ -37,7 +37,7 @@ func HandleAddon(s *discordgo.Session, i *discordgo.InteractionCreate) {
 		switch opt.Name {
 		case "owner":
 			owner = opt.StringValue()
-		case "repo":
+		case "addon":
 			repo = opt.StringValue()
 		}
 	}
