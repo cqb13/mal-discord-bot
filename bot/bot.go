@@ -25,6 +25,8 @@ func Run() {
 	checkNilErr(err)
 
 	session.AddHandler(commands.HandleInteractions)
+	utils.Log("say command added")
+	session.AddHandler(commands.HandleSayCommand)
 
 	session.Open()
 	defer session.Close()
