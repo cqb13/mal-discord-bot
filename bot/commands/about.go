@@ -53,5 +53,10 @@ func handleAbout(s *discordgo.Session, i *discordgo.InteractionCreate) {
 		},
 	}
 
-	utils.InteractionRespondEmbed(embed, s, i.Interaction, !utils.IsOwner(i), "")
+	if !utils.IsOwner(i) {
+		utils.InteractionRespondEmbed(embed, s, i.Interaction, true, "")
+	}
+
+	utils.SendToChannelEmbed(embed, s, i.ChannelID, "")
+	utils.InteractionRespondText("Sent", s, i.Interaction, true, "")
 }
