@@ -10,6 +10,7 @@ import (
 
 var Commands = []*discordgo.ApplicationCommand{
 	AboutCommand,
+	DeveloperInfoCommand,
 	addonList.AddonCommand,
 	addonList.ListStatsCommand,
 	addonList.MostDownloadedCommand,
@@ -33,6 +34,9 @@ func HandleInteractions(s *discordgo.Session, i *discordgo.InteractionCreate) {
 		return
 	case "addon":
 		addonList.HandleAddon(s, i)
+		return
+	case "developer-info":
+		handleDeveloperInfo(s, i)
 		return
 	case "list-stats":
 		addonList.HandleListStats(s, i)

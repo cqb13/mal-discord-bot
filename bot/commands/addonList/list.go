@@ -15,6 +15,15 @@ type Addon struct {
 	Verified    bool     `json:"verified"`
 	Repo        Repo     `json:"repo"`
 	Links       Links    `json:"links"`
+	Custom      Custom   `json:"custom"`
+}
+
+type Custom struct {
+	Description       string   `json:"description"`
+	SupportedVersions []string `json:"supported_versions"`
+	Icon              string   `json:"icon"`
+	Discord           string   `json:"discord"`
+	Homepage          string   `json:"Homepage"`
 }
 
 type Features struct {
