@@ -6,6 +6,28 @@ import (
 	"time"
 )
 
+var StartTime time.Time
+
+func CalculateUptime() string {
+	timeSinceStart := time.Since(StartTime)
+
+	totalSeconds := int(timeSinceStart.Seconds())
+
+	weeks := totalSeconds / (7 * 24 * 3600)
+	totalSeconds %= 7 * 24 * 3600
+
+	days := totalSeconds / (24 * 3600)
+	totalSeconds %= 24 * 3600
+
+	hours := totalSeconds / 3600
+	totalSeconds %= 3600
+
+	minutes := totalSeconds / 60
+	seconds := totalSeconds % 60
+
+	return fmt.Sprintf("%dw %dd %dh %dm %ds", weeks, days, hours, minutes, seconds)
+}
+
 func Ternary(cond bool, a string, b string) string {
 	if cond {
 		return a

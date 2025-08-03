@@ -5,6 +5,7 @@ import (
 	"log"
 	"os"
 	"os/signal"
+	"time"
 
 	"dev/cqb13/mal-bot/bot/commands"
 	"dev/cqb13/mal-bot/utils"
@@ -41,6 +42,8 @@ func Run() {
 		}
 		utils.Log(fmt.Sprintf("%s command added", cmd.Name))
 	}
+
+	utils.StartTime = time.Now()
 
 	utils.Log("Bot Running")
 	c := make(chan os.Signal, 1)
