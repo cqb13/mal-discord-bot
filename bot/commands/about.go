@@ -12,6 +12,7 @@ var AboutCommand = &discordgo.ApplicationCommand{
 }
 
 func handleAbout(s *discordgo.Session, i *discordgo.InteractionCreate) {
+
 	embed := &discordgo.MessageEmbed{
 		Title:       "Meteor Addon List",
 		Description: "An ever updating list of free and open-source Meteor Client addons.",
@@ -23,24 +24,32 @@ func handleAbout(s *discordgo.Session, i *discordgo.InteractionCreate) {
 				Inline: false,
 			},
 			{
-				Name:  "How to Get Your Addon Verified",
-				Value: "Create a post in **verification-requests** with:\n- GitHub Repository Link\n- Short description of what your addon does\n- **Addons that fall more than 1 major update behind will lose verified status and will need to be re-verified when/if updated.**",
+				Name:  "How to Verify Your Addon",
+				Value: "To verify your addon you must join a post in the **verification requests** channel",
+			},
+			{
+				Name:  "What Your Post Must Include",
+				Value: "- A GitHub repository link\n- A short description of what your addon does",
 			},
 			{
 				Name:  "What Will Prevent Verification",
-				Value: "- Harmful features (e.g. backdoors, coordinate leaks)\n- Obfuscated/unreadable code\n- Broken or non-functional addons",
-			},
-			{
-				Name:  "Addons that Will Not be Verified",
-				Value: "- Forks that do not meaningfully expand on the original\n- Forks of actively maintained addons (commits within 6 months)\n- Addons that take code from other addons without properly crediting original authors",
+				Value: "- Harmful or malicious features (e.g., backdoors, coordinate leaks, remote control)\n- Obfuscated or intentionally confusing code\n- Forks of addons that are still actively maintained (commits within the last 6 months)\n- Addons copying modules from other addons without proper credit or meaningful changes",
 			},
 			{
 				Name:  "",
-				Value: "*It may take some time to verify your addon. You will be notified when a decision is made.\nPlease only submit addons that you have created.*",
+				Value: "*It may take some time to verify your addon. You will be notified when a decision is made.*\n*Please only submit addons that you have created.*",
+			},
+			{
+				Name:  "Verified Addon Requirements",
+				Value: "Once verified, your addon must continue to meet these requirements:\n\n- Code must remain open-source and free of obfuscation\n- No hidden, deceptive, or user-targeting code, including code that:\n  - Disconnects, kicks, or disrupts users\n  - Gives a user remote control over another user's client\n  - Collects or sends private data (coords, IPs, messages) without consent\n  - Cosmetic-only features are allowed\n- Addons should not cause severe performance issues or crashes\n- Addons must stay compatible with current Meteor Client + Minecraft versions",
+			},
+			{
+				Name:  "Policy Violations & Consequences",
+				Value: "- **First Offense:** Addon will be unverified until compliant. Developer will be notified if contact info is available.\n- **Second Offense:** Permanently unverified and not eligible for future verification.\n- *Developers may appeal by contacting cqb13 on Discord.*",
 			},
 			{
 				Name:  "Contributing",
-				Value: "Feel free help improve Meteor Addon List by contributing to the [website](https://github.com/cqb13/meteor-addons) or [scanner](https://github.com/cqb13/meteor-addon-scanner).",
+				Value: "Help improve Meteor Addon List by contributing to the [website](https://github.com/cqb13/meteor-addons) or [scanner](https://github.com/cqb13/meteor-addon-scanner).",
 			},
 			{
 				Name:  "Rules",
