@@ -25,7 +25,7 @@ func handleAbout(s *discordgo.Session, i *discordgo.InteractionCreate) {
 			},
 			{
 				Name:  "How to Verify Your Addon",
-				Value: "To verify your addon you must join a post in the **verification requests** channel",
+				Value: "To verify your addon you must create a post in the **verification requests** channel",
 			},
 			{
 				Name:  "What Your Post Must Include",
@@ -33,7 +33,7 @@ func handleAbout(s *discordgo.Session, i *discordgo.InteractionCreate) {
 			},
 			{
 				Name:  "What Will Prevent Verification",
-				Value: "- Harmful or malicious features (e.g., backdoors, coordinate leaks, remote control)\n- Obfuscated or intentionally confusing code\n- Forks of addons that are still actively maintained (commits within the last 6 months)\n- Addons copying modules from other addons without proper credit or meaningful changes",
+				Value: "- Harmful or malicious features (e.g., backdoors, coordinate leaks, remote control)\n- Obfuscated or intentionally confusing code\n- Forks of addons that are still actively maintained (commits within the last 6 months)\n- Copying modules from other addons without proper credit or meaningful changes",
 			},
 			{
 				Name:  "",
