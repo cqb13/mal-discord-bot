@@ -4,6 +4,7 @@ import (
 	"dev/cqb13/mal-bot/utils"
 	"fmt"
 	"sort"
+	"strings"
 
 	"github.com/bwmarrin/discordgo"
 )
@@ -24,10 +25,10 @@ func HandleMostStarred(s *discordgo.Session, i *discordgo.InteractionCreate) {
 		return list[i].Repo.Stars > list[j].Repo.Stars
 	})
 
-	top10Str := ""
+	var top10Str strings.Builder
 
 	for i := range 10 {
-		top10Str += fmt.Sprintf("- **%s** - %d stars\n", list[i].Name, list[i].Repo.Stars)
+		top10Str.WriteString(fmt.Sprintf("- **%s** - %d stars\n", list[i].Name, list[i].Repo.Stars))
 	}
 
 	embed := &discordgo.MessageEmbed{
@@ -37,7 +38,7 @@ func HandleMostStarred(s *discordgo.Session, i *discordgo.InteractionCreate) {
 		Fields: []*discordgo.MessageEmbedField{
 			{
 				Name:  "",
-				Value: top10Str,
+				Value: top10Str.String(),
 			},
 		},
 	}

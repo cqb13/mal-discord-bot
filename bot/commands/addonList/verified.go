@@ -3,6 +3,7 @@ package addonList
 import (
 	"dev/cqb13/mal-bot/utils"
 	"fmt"
+	"strings"
 
 	"github.com/bwmarrin/discordgo"
 )
@@ -19,11 +20,11 @@ func HandleVerified(s *discordgo.Session, i *discordgo.InteractionCreate) {
 		return
 	}
 
-	value := ""
+	var value strings.Builder
 
 	for _, addon := range list {
 		if addon.Verified {
-			value += fmt.Sprintf("- **%s** by %s\n", addon.Name, addon.Repo.Owner)
+			value.WriteString(fmt.Sprintf("- **%s** by %s\n", addon.Name, addon.Repo.Owner))
 		}
 	}
 
@@ -34,7 +35,7 @@ func HandleVerified(s *discordgo.Session, i *discordgo.InteractionCreate) {
 		Fields: []*discordgo.MessageEmbedField{
 			{
 				Name:  "",
-				Value: value,
+				Value: value.String(),
 			},
 		},
 	}

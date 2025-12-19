@@ -2,6 +2,7 @@ package main
 
 import (
 	"dev/cqb13/mal-bot/bot"
+	"dev/cqb13/mal-bot/bot/commands/addonList"
 	"dev/cqb13/mal-bot/utils"
 	"fmt"
 	"os"
@@ -20,6 +21,12 @@ func main() {
 	var githubToken string = os.Getenv("GITHUB_TOKEN")
 
 	utils.InitDefaultHeaders(githubToken)
+
+	_, err = addonList.UseList()
+	if err != nil {
+		fmt.Printf("Failed to load initial list: %s\n", err)
+		os.Exit(1)
+	}
 
 	bot.BotToken = key
 	bot.Run()

@@ -20,17 +20,19 @@ type Addon struct {
 
 type Custom struct {
 	Description       string   `json:"description"`
+	Tags              []string `json:"tags"`
 	SupportedVersions []string `json:"supported_versions"`
 	Icon              string   `json:"icon"`
 	Discord           string   `json:"discord"`
-	Homepage          string   `json:"Homepage"`
+	Homepage          string   `json:"homepage"`
 }
 
 type Features struct {
-	Modules      []string `json:"modules"`
-	Commands     []string `json:"commands"`
-	HudElements  []string `json:"hud_elements"`
-	FeatureCount int      `json:"feature_count"`
+	Modules       []string `json:"modules"`
+	Commands      []string `json:"commands"`
+	HudElements   []string `json:"hud_elements"`
+	CustomScreens []string `json:"custom_screens"`
+	FeatureCount  int      `json:"feature_count"`
 }
 
 type Repo struct {
@@ -46,11 +48,12 @@ type Repo struct {
 }
 
 type Links struct {
-	Github   string `json:"github"`
-	Download string `json:"download"`
-	Discord  string `json:"discord"`
-	Homepage string `json:"homepage"`
-	Icon     string `json:"icon"`
+	Github        string   `json:"github"`
+	Downloads     []string `json:"downloads"`
+	LatestRelease string   `json:"latest_release"`
+	Discord       string   `json:"discord"`
+	Homepage      string   `json:"homepage"`
+	Icon          string   `json:"icon"`
 }
 
 var FetchTime time.Time
@@ -72,7 +75,7 @@ func UseList() ([]Addon, error) {
 }
 
 func getAddonList() ([]Addon, error) {
-	url := "https://raw.githubusercontent.com/cqb13/meteor-addon-scanner/main/addons.json"
+	url := "https://raw.githubusercontent.com/cqb13/meteor-addon-scanner/refs/heads/addons/addons.json"
 	bytes, err := utils.MakeGetRequest(url)
 	if err != nil {
 		return nil, err

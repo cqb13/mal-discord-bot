@@ -4,6 +4,7 @@ import (
 	"dev/cqb13/mal-bot/utils"
 	"fmt"
 	"sort"
+	"strings"
 
 	"github.com/bwmarrin/discordgo"
 )
@@ -28,10 +29,10 @@ func HandleMostFeatured(s *discordgo.Session, i *discordgo.InteractionCreate) {
 		return list[i].Features.FeatureCount > list[j].Features.FeatureCount
 	})
 
-	top10Str := ""
+	var top10Str strings.Builder
 
 	for i := range 10 {
-		top10Str += fmt.Sprintf("- **%s** - %d features\n", list[i].Name, list[i].Features.FeatureCount)
+		top10Str.WriteString(fmt.Sprintf("- **%s** - %d features\n", list[i].Name, list[i].Features.FeatureCount))
 	}
 
 	embed := &discordgo.MessageEmbed{
@@ -41,7 +42,7 @@ func HandleMostFeatured(s *discordgo.Session, i *discordgo.InteractionCreate) {
 		Fields: []*discordgo.MessageEmbedField{
 			{
 				Name:  "",
-				Value: top10Str,
+				Value: top10Str.String(),
 			},
 		},
 	}

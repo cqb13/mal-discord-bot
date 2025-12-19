@@ -4,6 +4,7 @@ import (
 	"dev/cqb13/mal-bot/utils"
 	"fmt"
 	"sort"
+	"strings"
 
 	"github.com/bwmarrin/discordgo"
 )
@@ -24,10 +25,10 @@ func HandleMostDownloaded(s *discordgo.Session, i *discordgo.InteractionCreate) 
 		return list[i].Repo.Downloads > list[j].Repo.Downloads
 	})
 
-	top10Str := ""
+	var top10Str strings.Builder
 
 	for i := range 10 {
-		top10Str += fmt.Sprintf("- **%s** - %d downloads\n", list[i].Name, list[i].Repo.Downloads)
+		top10Str.WriteString(fmt.Sprintf("- **%s** - %d downloads\n", list[i].Name, list[i].Repo.Downloads))
 	}
 
 	embed := &discordgo.MessageEmbed{
@@ -37,7 +38,7 @@ func HandleMostDownloaded(s *discordgo.Session, i *discordgo.InteractionCreate) 
 		Fields: []*discordgo.MessageEmbedField{
 			{
 				Name:  "",
-				Value: top10Str,
+				Value: top10Str.String(),
 			},
 		},
 	}
