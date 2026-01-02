@@ -24,7 +24,7 @@ func HandleVerified(s *discordgo.Session, i *discordgo.InteractionCreate) {
 
 	for _, addon := range list {
 		if addon.Verified {
-			value.WriteString(fmt.Sprintf("- **%s** by %s\n", addon.Name, addon.Repo.Owner))
+			fmt.Fprintf(&value, "- **%s** by %s\n", addon.Name, addon.Repo.Owner)
 		}
 	}
 

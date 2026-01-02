@@ -32,7 +32,7 @@ func HandleMostFeatured(s *discordgo.Session, i *discordgo.InteractionCreate) {
 	var top10Str strings.Builder
 
 	for i := range 10 {
-		top10Str.WriteString(fmt.Sprintf("- **%s** - %d features\n", list[i].Name, list[i].Features.FeatureCount))
+		fmt.Fprintf(&top10Str, "- **%s** - %d features\n", list[i].Name, list[i].Features.FeatureCount)
 	}
 
 	embed := &discordgo.MessageEmbed{
