@@ -17,7 +17,7 @@ func main() {
 		os.Exit(1)
 	}
 
-	var key string = os.Getenv("KEY")
+	var key string = os.Getenv("TEST_BOT")
 	var githubToken string = os.Getenv("GITHUB_TOKEN")
 
 	utils.InitDefaultHeaders(githubToken)
