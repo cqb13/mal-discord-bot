@@ -34,5 +34,8 @@ func handleBot(s *discordgo.Session, i *discordgo.InteractionCreate) {
 		},
 	}
 
-	utils.InteractionRespondEmbed(embed, s, i.Interaction, false, "")
+	err := utils.InteractionRespondEmbed(embed, s, i.Interaction, false, "")
+	if err != nil {
+		utils.LogCmdResponseFailiure(i, err.Error())
+	}
 }

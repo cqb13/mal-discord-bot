@@ -14,15 +14,24 @@ var NotifiedCommand = &discordgo.ApplicationCommand{
 
 func handleNotified(s *discordgo.Session, i *discordgo.InteractionCreate) {
 	if i.GuildID != utils.MainServerId {
-		utils.InteractionRespondText("This command can not be run outside of the Meteor Addon List server: https://discord.gg/XU7Y9G46KD", s, i.Interaction, true, "")
+		err := utils.InteractionRespondText("This command can not be run outside of the Meteor Addon List server: https://discord.gg/XU7Y9G46KD", s, i.Interaction, true, "")
+		if err != nil {
+			utils.LogCmdResponseFailiure(i, err.Error())
+		}
 		return
 	}
 
 	if slices.Contains(i.Member.Roles, utils.NotifiedRoleId) {
 		s.GuildMemberRoleRemove(i.GuildID, i.Member.User.ID, utils.NotifiedRoleId)
-		utils.InteractionRespondText("You will no longer be notified when new addons are verified.", s, i.Interaction, true, "")
+		err := utils.InteractionRespondText("You will no longer be notified when new addons are verified.", s, i.Interaction, true, "")
+		if err != nil {
+			utils.LogCmdResponseFailiure(i, err.Error())
+		}
 	} else {
 		s.GuildMemberRoleAdd(i.GuildID, i.Member.User.ID, utils.NotifiedRoleId)
-		utils.InteractionRespondText("You will now be notified when new addons are verified.", s, i.Interaction, true, "")
+		err := utils.InteractionRespondText("You will now be notified when new addons are verified.", s, i.Interaction, true, "")
+		if err != nil {
+			utils.LogCmdResponseFailiure(i, err.Error())
+		}
 	}
 }

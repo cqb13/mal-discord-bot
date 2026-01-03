@@ -73,5 +73,8 @@ func handleNotify(s *discordgo.Session, i *discordgo.InteractionCreate) {
 		Color:       utils.EmbedColor,
 	}
 
-	utils.InteractionRespondEmbed(embed, s, i.Interaction, false, utils.NotifiedRoleId)
+	err := utils.InteractionRespondEmbed(embed, s, i.Interaction, false, utils.NotifiedRoleId)
+	if err != nil {
+		utils.LogCmdResponseFailiure(i, err.Error())
+	}
 }

@@ -63,18 +63,21 @@ func handleRepo(s *discordgo.Session, i *discordgo.InteractionCreate) {
 	repository, err := getRepo(owner, repo)
 	if err != nil {
 		utils.InteractionRespondText(fmt.Sprintf("Command Failed: %v", err), s, i.Interaction, true, "")
+		utils.LogCmdError(i, err.Error())
 		return
 	}
 
 	createdAt, err := utils.RFC3339StrToPrettyStr(repository.CreatedAt)
 	if err != nil {
 		utils.InteractionRespondText(fmt.Sprintf("Command Failed: %v", err), s, i.Interaction, true, "")
+		utils.LogCmdError(i, err.Error())
 		return
 	}
 
 	pushedAt, err := utils.RFC3339StrToPrettyStr(repository.PushedAt)
 	if err != nil {
 		utils.InteractionRespondText(fmt.Sprintf("Command Failed: %v", err), s, i.Interaction, true, "")
+		utils.LogCmdError(i, err.Error())
 		return
 	}
 
@@ -126,7 +129,10 @@ func handleRepo(s *discordgo.Session, i *discordgo.InteractionCreate) {
 		},
 	}
 
-	utils.InteractionRespondEmbed(embed, s, i.Interaction, false, "")
+	err = utils.InteractionRespondEmbed(embed, s, i.Interaction, false, "")
+	if err != nil {
+		utils.LogCmdResponseFailiure(i, err.Error())
+	}
 }
 
 func getRepo(owner string, repo string) (*repository, error) {

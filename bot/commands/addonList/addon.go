@@ -45,6 +45,7 @@ func HandleAddon(s *discordgo.Session, i *discordgo.InteractionCreate) {
 	list, err := UseList()
 	if err != nil {
 		utils.InteractionRespondText(fmt.Sprintf("Command Failed: %v", err), s, i.Interaction, true, "")
+		utils.LogCmdError(i, err.Error())
 		return
 	}
 
@@ -67,12 +68,14 @@ func HandleAddon(s *discordgo.Session, i *discordgo.InteractionCreate) {
 	createdAt, err := utils.RFC3339StrToPrettyStr(addon.Repo.CreationDate)
 	if err != nil {
 		utils.InteractionRespondText(fmt.Sprintf("Command Failed: %v", err), s, i.Interaction, true, "")
+		utils.LogCmdError(i, err.Error())
 		return
 	}
 
 	lastUpdate, err := utils.RFC3339StrToPrettyStr(addon.Repo.LastUpdate)
 	if err != nil {
 		utils.InteractionRespondText(fmt.Sprintf("Command Failed: %v", err), s, i.Interaction, true, "")
+		utils.LogCmdError(i, err.Error())
 		return
 	}
 
@@ -150,5 +153,8 @@ func HandleAddon(s *discordgo.Session, i *discordgo.InteractionCreate) {
 		},
 	}
 
-	utils.InteractionRespondEmbed(embed, s, i.Interaction, false, "")
+	err = utils.InteractionRespondEmbed(embed, s, i.Interaction, false, "")
+	if err != nil {
+		utils.LogCmdResponseFailiure(i, err.Error())
+	}
 }

@@ -12,7 +12,6 @@ var AboutCommand = &discordgo.ApplicationCommand{
 }
 
 func handleAbout(s *discordgo.Session, i *discordgo.InteractionCreate) {
-
 	embed := &discordgo.MessageEmbed{
 		Title:       "Meteor Addon List",
 		Description: "An ever updating list of free and open-source Meteor Client addons.",
@@ -63,10 +62,19 @@ func handleAbout(s *discordgo.Session, i *discordgo.InteractionCreate) {
 	}
 
 	if !utils.IsOwner(i) {
-		utils.InteractionRespondEmbed(embed, s, i.Interaction, true, "")
+		err := utils.InteractionRespondEmbed(embed, s, i.Interaction, true, "")
+		if err != nil {
+			utils.LogCmdResponseFailiure(i, err.Error())
+		}
 		return
 	}
 
-	utils.SendToChannelEmbed(embed, s, i.ChannelID, "")
-	utils.InteractionRespondText("Sent", s, i.Interaction, true, "")
+	err := utils.SendToChannelEmbed(embed, s, i.ChannelID, "")
+	if err != nil {
+		utils.LogCmdResponseFailiure(i, err.Error())
+	}
+	err = utils.InteractionRespondText("Sent", s, i.Interaction, true, "")
+	if err != nil {
+		utils.LogCmdResponseFailiure(i, err.Error())
+	}
 }

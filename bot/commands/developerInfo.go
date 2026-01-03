@@ -28,5 +28,8 @@ func handleDeveloperInfo(s *discordgo.Session, i *discordgo.InteractionCreate) {
 		},
 	}
 
-	utils.InteractionRespondEmbed(embed, s, i.Interaction, true, "")
+	err := utils.InteractionRespondEmbed(embed, s, i.Interaction, true, "")
+	if err != nil {
+		utils.LogCmdResponseFailiure(i, err.Error())
+	}
 }

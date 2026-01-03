@@ -18,6 +18,7 @@ func HandleMostDownloaded(s *discordgo.Session, i *discordgo.InteractionCreate) 
 	list, err := UseList()
 	if err != nil {
 		utils.InteractionRespondText(fmt.Sprintf("Command Failed: %v", err), s, i.Interaction, true, "")
+		utils.LogCmdError(i, err.Error())
 		return
 	}
 
@@ -43,5 +44,8 @@ func HandleMostDownloaded(s *discordgo.Session, i *discordgo.InteractionCreate) 
 		},
 	}
 
-	utils.InteractionRespondEmbed(embed, s, i.Interaction, false, "")
+	err = utils.InteractionRespondEmbed(embed, s, i.Interaction, false, "")
+	if err != nil {
+		utils.LogCmdResponseFailiure(i, err.Error())
+	}
 }
