@@ -19,20 +19,30 @@ type Addon struct {
 }
 
 type Custom struct {
-	Description       string   `json:"description"`
-	Tags              []string `json:"tags"`
-	SupportedVersions []string `json:"supported_versions"`
-	Icon              string   `json:"icon"`
-	Discord           string   `json:"discord"`
-	Homepage          string   `json:"homepage"`
+	Description        string   `json:"description"`
+	Tags               []string `json:"tags"`
+	SupportedVersions  []string `json:"supported_versions"`
+	Icon               string   `json:"icon"`
+	Discord            string   `json:"discord"`
+	Homepage           string   `json:"homepage"`
+	FeatureDirectories struct {
+		Modules     []string `json:"modules"`
+		Commands    []string `json:"commands"`
+		HudElements []string `json:"hud_elements"`
+	} `json:"feature_directories"`
 }
 
 type Features struct {
-	Modules       []string `json:"modules"`
-	Commands      []string `json:"commands"`
-	HudElements   []string `json:"hud_elements"`
-	CustomScreens []string `json:"custom_screens"`
-	FeatureCount  int      `json:"feature_count"`
+	Modules       []Feature `json:"modules"`
+	Commands      []Feature `json:"commands"`
+	HudElements   []Feature `json:"hud_elements"`
+	CustomScreens []string  `json:"custom_screens"`
+	FeatureCount  int       `json:"feature_count"`
+}
+
+type Feature struct {
+	Name        string `json:"name"`
+	Description string `json:"description"`
 }
 
 type Repo struct {

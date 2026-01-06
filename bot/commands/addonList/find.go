@@ -70,24 +70,24 @@ func HandleFind(s *discordgo.Session, i *discordgo.InteractionCreate) {
 	var haveFeature []Addon
 
 	for _, addon := range list {
-		if (featureType == "all" || featureType == "module") && slices.ContainsFunc(addon.Features.Modules, func(feature string) bool {
-			return strings.ToLower(feature) == name
+		if (featureType == "all" || featureType == "module") && slices.ContainsFunc(addon.Features.Modules, func(feature Feature) bool {
+			return strings.ToLower(feature.Name) == name
 		}) {
 			haveFeature = append(haveFeature, addon)
 
 			continue
 		}
 
-		if (featureType == "all" || featureType == "command") && slices.ContainsFunc(addon.Features.Commands, func(feature string) bool {
-			return strings.ToLower(feature) == name
+		if (featureType == "all" || featureType == "command") && slices.ContainsFunc(addon.Features.Commands, func(feature Feature) bool {
+			return strings.ToLower(feature.Name) == name
 		}) {
 			haveFeature = append(haveFeature, addon)
 
 			continue
 		}
 
-		if (featureType == "all" || featureType == "hud") && slices.ContainsFunc(addon.Features.HudElements, func(feature string) bool {
-			return strings.ToLower(feature) == name
+		if (featureType == "all" || featureType == "hud") && slices.ContainsFunc(addon.Features.HudElements, func(feature Feature) bool {
+			return strings.ToLower(feature.Name) == name
 		}) {
 			haveFeature = append(haveFeature, addon)
 

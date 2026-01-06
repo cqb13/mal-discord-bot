@@ -23,6 +23,14 @@ func handleAbout(s *discordgo.Session, i *discordgo.InteractionCreate) {
 				Inline: false,
 			},
 			{
+				Name:  "Rules",
+				Value: "1. Follow the Discord [Terms of Service](https://discord.com/terms) and [Community Guidelines](https://discord.com/guidelines).\n2. Do not attempt to spam.\n3. Do not advertise outside of the appropriate channel.",
+			},
+			{
+				Name:  "Developer Info",
+				Value: "If you are an addon developer, refer to the [about page](http://meteoraddons.com/about#developer-info) on the website to see how you can get the most out of the Meteor Addon List.",
+			},
+			{
 				Name:  "How to Verify Your Addon",
 				Value: "To verify your addon you must create a post in the **verification requests** channel",
 			},
@@ -49,10 +57,6 @@ func handleAbout(s *discordgo.Session, i *discordgo.InteractionCreate) {
 			{
 				Name:  "Contributing",
 				Value: "Help improve Meteor Addon List by contributing to the [website](https://github.com/cqb13/meteor-addons) or [scanner](https://github.com/cqb13/meteor-addon-scanner).",
-			},
-			{
-				Name:  "Rules",
-				Value: "1. Follow the Discord [Terms of Service](https://discord.com/terms) and [Community Guidelines](https://discord.com/guidelines).\n2. Do not attempt to spam.\n3. Do not advertise outside of the appropriate channel.",
 			},
 			{
 				Name:  "",
