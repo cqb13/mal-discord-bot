@@ -19,7 +19,7 @@ func handleAbout(s *discordgo.Session, i *discordgo.InteractionCreate) {
 		Fields: []*discordgo.MessageEmbedField{
 			{
 				Name:   "",
-				Value:  "**[Browse Addons](https://www.meteoraddons.com)**",
+				Value:  "**[Browse Addons](https://meteoraddons.com)**",
 				Inline: false,
 			},
 			{

@@ -17,7 +17,7 @@ func handleBot(s *discordgo.Session, i *discordgo.InteractionCreate) {
 		Title:     "Meteor Addon List Bot",
 		URL:       "https://github.com/cqb13/mal-discord-bot",
 		Color:     utils.EmbedColor,
-		Thumbnail: &discordgo.MessageEmbedThumbnail{URL: "https://www.meteoraddons.com/icon.png"},
+		Thumbnail: &discordgo.MessageEmbedThumbnail{URL: "https://meteoraddons.com/web-app-manifest-512x512.png"},
 		Fields: []*discordgo.MessageEmbedField{
 			{
 				Name:  "Start Time",

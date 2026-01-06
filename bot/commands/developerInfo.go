@@ -19,7 +19,7 @@ func handleDeveloperInfo(s *discordgo.Session, i *discordgo.InteractionCreate) {
 		Fields: []*discordgo.MessageEmbedField{
 			{
 				Name:  "Custom Properties",
-				Value: "The scanner automatically pulls info from GitHub, but it might not always be accurate or exactly how you want it. To fix or customize that data, you can manually add your own values.\n\nTo do that, create the file `meteor-addon-list.json` in the root directory of your addon, and add the fields you wish to overide:\n```json\n{\n\t\"description\": \"A short description of your addon.\",\n\t\"tags\": [\n\t\t\"PvP\",\n\t\t\"Utility\",\n\t\t\"Theme\",\n\t\t\"...\"\n\t],\n\t\"supported_versions\": [\n\t\t\"1.21.7\",\n\t\t\"1.21.8\"\n\t],\n\t\"icon\": \"https://meteoraddons.com/icon.png\",\n\t\"discord\": \"https://discord.gg/XU7Y9G46KD\",\n\t\"homepage\": \"https://www.meteoraddons.com\"\n}\n```",
+				Value: "The scanner automatically pulls info from GitHub, but it might not always be accurate or exactly how you want it. To fix or customize that data, you can manually add your own values.\n\nTo do that, create the file `meteor-addon-list.json` in the root directory of your addon, and add the fields you wish to overide:\n```json\n{\n\t\"description\": \"A short description of your addon.\",\n\t\"tags\": [\n\t\t\"PvP\",\n\t\t\"Utility\",\n\t\t\"Theme\",\n\t\t\"...\"\n\t],\n\t\"supported_versions\": [\n\t\t\"1.21.7\",\n\t\t\"1.21.8\"\n\t],\n\t\"icon\": \"https://meteoraddons.com/default-addon-icon.webp\",\n\t\"discord\": \"https://discord.gg/XU7Y9G46KD\",\n\t\"homepage\": \"https://meteoraddons.com\"\n}\n```",
 			},
 			{
 				Name:  "Supported Tags",
