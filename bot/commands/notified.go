@@ -9,7 +9,7 @@ import (
 
 var NotifiedCommand = &discordgo.ApplicationCommand{
 	Name:        "notified",
-	Description: "Gives you the notified role, meaning you will be notified when addons are verified",
+	Description: "Gives and removes the notified role, meaning you will be notified when addons are verified",
 }
 
 func handleNotified(s *discordgo.Session, i *discordgo.InteractionCreate) {
