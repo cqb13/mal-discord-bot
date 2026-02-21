@@ -12,7 +12,6 @@ var Commands = []*discordgo.ApplicationCommand{
 	AboutCommand,
 	BotCommand,
 	addonList.AddonCommand,
-	addonList.FindCommand,
 	addonList.ListStatsCommand,
 	addonList.MostDownloadedCommand,
 	addonList.MostFeaturedCommand,
@@ -38,9 +37,6 @@ func HandleInteractions(s *discordgo.Session, i *discordgo.InteractionCreate) {
 		return
 	case "bot":
 		handleBot(s, i)
-		return
-	case "find":
-		addonList.HandleFind(s, i)
 		return
 	case "list-stats":
 		addonList.HandleListStats(s, i)
