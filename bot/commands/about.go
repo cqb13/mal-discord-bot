@@ -40,7 +40,7 @@ func handleAbout(s *discordgo.Session, i *discordgo.InteractionCreate) {
 			},
 			{
 				Name:  "What Will Prevent Verification",
-				Value: "- Harmful or malicious features (e.g., backdoors, coordinate leaks, remote control)\n- Obfuscated or intentionally confusing code\n- Forks of addons that are still actively maintained (commits within the last 6 months)\n- Copying modules from other addons without proper credit or meaningful changes",
+				Value: "- Harmful or malicious features (e.g., backdoors, coordinate leaks, remote control)\n- Obfuscated or intentionally confusing code\n- Forks of addons that are still actively maintained (commits within the last 6 months)\n- Copying modules from other addons without proper credit or meaningful changes\n- Addons that appear vibe coded will not be verified for that reason if they have any issues",
 			},
 			{
 				Name:  "",
