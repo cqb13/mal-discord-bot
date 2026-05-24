@@ -1,6 +1,7 @@
 package utils
 
 import (
+	"bytes"
 	"io"
 	"net/http"
 )
@@ -14,6 +15,35 @@ func MakeHeadRequest(url string) (int, error) {
 	}
 	defer resp.Body.Close()
 	return resp.StatusCode, nil
+}
+
+func MakePostRequest(url string, body []byte) ([]byte, error) {
+	req, err := http.NewRequest("POST", url, bytes.NewReader(body))
+	if err != nil {
+		return nil, err
+	}
+
+	for key, values := range defaultHeaders {
+		for _, value := range values {
+			req.Header.Add(key, value)
+		}
+	}
+
+	client := &http.Client{}
+
+	resp, err := client.Do(req)
+	if err != nil {
+		return nil, err
+	}
+
+	defer resp.Body.Close()
+
+	bytes, err := io.ReadAll(resp.Body)
+	if err != nil {
+		return nil, err
+	}
+
+	return bytes, nil
 }
 
 func MakeGetRequest(url string) ([]byte, error) {

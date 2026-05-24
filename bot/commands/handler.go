@@ -20,6 +20,7 @@ var Commands = []*discordgo.ApplicationCommand{
 	NotifyCommand,
 	RepoCommand,
 	addonList.VerifiedCommand,
+	RescanCommand,
 }
 
 func HandleInteractions(s *discordgo.Session, i *discordgo.InteractionCreate) {
@@ -31,36 +32,27 @@ func HandleInteractions(s *discordgo.Session, i *discordgo.InteractionCreate) {
 	switch i.ApplicationCommandData().Name {
 	case "about":
 		handleAbout(s, i)
-		return
 	case "addon":
 		addonList.HandleAddon(s, i)
-		return
 	case "bot":
 		handleBot(s, i)
-		return
 	case "list-stats":
 		addonList.HandleListStats(s, i)
-		return
 	case "most-downloaded":
 		addonList.HandleMostDownloaded(s, i)
-		return
 	case "most-featured":
 		addonList.HandleMostFeatured(s, i)
-		return
 	case "most-starred":
 		addonList.HandleMostStarred(s, i)
-		return
 	case "notified":
 		handleNotified(s, i)
-		return
 	case "notify":
 		handleNotify(s, i)
-		return
 	case "repo":
 		handleRepo(s, i)
-		return
 	case "verified":
 		addonList.HandleVerified(s, i)
-		return
+	case "rescan":
+		handleRescan(s, i)
 	}
 }
