@@ -40,7 +40,7 @@ func handleAbout(s *discordgo.Session, i *discordgo.InteractionCreate) {
 			},
 			{
 				Name:  "What Will Prevent Verification",
-				Value: "- Harmful or malicious features (e.g., backdoors, coordinate leaks, remote control)\n- Obfuscated or intentionally confusing code\n- Forks of addons that are still actively maintained (commits within the last 6 months)\n- Copying modules from other addons without proper credit or meaningful changes\n- Addons that appear vibe coded will not be verified for that reason if they have any issues",
+				Value: "- Harmful or malicious features (e.g., backdoors, coordinate leaks, remote control)\n- Obfuscated or intentionally confusing code\n- Forks of addons that are still actively maintained (commits within the last 6 months)\n- Copying modules from other addons without proper credit or meaningful changes\n- Addons that appear vibe coded will not be verified for that reason if they have any issues\n- Addons that fail to be picked up by the scanner will not be verified. The scanner will successfully find all addons that follow the official Meteor Addon Template, If your addon deviates from the structure of that template and is not picked up by the scanner it will not be verified and you will not receive support fixing the issue.",
 			},
 			{
 				Name:  "",
