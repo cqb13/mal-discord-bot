@@ -132,7 +132,7 @@ func HandleAddon(s *discordgo.Session, i *discordgo.InteractionCreate) {
 			},
 			{
 				Name:   "Archived",
-				Value:  utils.Ternary(addon.Repo.Fork, "True", "False"),
+				Value:  utils.Ternary(addon.Repo.Archived, "True", "False"),
 				Inline: true,
 			},
 			{
